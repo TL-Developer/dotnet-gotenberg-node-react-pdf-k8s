@@ -1,0 +1,16 @@
+version: '3'
+services:
+  gotenberg:
+    build: ./gotenberg/
+    ports:
+      - 8000:3000
+  
+  backend-dotnet:
+    build: ./dotnet/
+    ports:
+      - 5000:8080
+
+  frontend-node-react:
+    build: ./frontend/
+    ports:
+      - 4200:4200
