@@ -11,6 +11,6 @@ services:
       - 5000:8080
 
   frontend-node-react:
-    build: ./frontend/
+    build: ./frontend-react/
     ports:
       - 4200:4200

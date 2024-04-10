@@ -19,3 +19,5 @@ host.docker.internal
 gotenberg on port 8000
 frontend on port 4200
 backend on port 5000
+
+# images on docker hub
