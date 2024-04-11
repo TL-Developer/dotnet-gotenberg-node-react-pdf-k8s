@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-react-gotenberg-pdf-deployment
+  namespace: dotnet-gotenberg-node-react-pdf-k8s
+  labels:
+    app: frontend-react-gotenberg-pdf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-react-gotenberg-pdf
+  template:
+    metadata:
+      labels:
+        app: frontend-react-gotenberg-pdf
+    spec:
+      containers:
+      - name: frontend-react-gotenberg-pdf
+        image: liminha/frontend-react-gotenberg-pdf:latest
+        ports:
+        - containerPort: 4200
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-react-gotenberg-pdf-service
+  namespace: dotnet-gotenberg-node-react-pdf-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: frontend-react-gotenberg-pdf
+  ports:
+    - protocol: TCP
+      port: 4200
+      targetPort: 4200

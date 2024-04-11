@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-gotenberg-generate-pdf-deployment
+  namespace: dotnet-gotenberg-node-react-pdf-k8s
+  labels:
+    app: dotnet-gotenberg-generate-pdf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-gotenberg-generate-pdf
+  template:
+    metadata:
+      labels:
+        app: dotnet-gotenberg-generate-pdf
+    spec:
+      containers:
+      - name: dotnet-gotenberg-generate-pdf
+        image: liminha/dotnet-gotenberg-generate-pdf:latest
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "250m"
+          limits:
+            memory: "500Mi"
+            cpu: "1000m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-gotenberg-generate-pdf-service
+  namespace: dotnet-gotenberg-node-react-pdf-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: dotnet-gotenberg-generate-pdf
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 8080
