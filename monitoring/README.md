@@ -11,7 +11,9 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 ```
 
 # GRAFANA LOGIN
+
 admin
+
 prom-operator
 
 # Dashboard Grafana
