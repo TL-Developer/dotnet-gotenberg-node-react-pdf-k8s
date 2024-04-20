@@ -3,17 +3,20 @@ services:
   gotenberg:
     container_name: gotenberg
     build: ./gotenberg/
+    image: liminha/gotenberg
     ports:
       - 8000:3000
   
   backend-dotnet:
     container_name: backend-dotnet
     build: ./dotnet/
+    image: liminha/dotnet-gotenberg-generate-pdf
     ports:
       - 5000:8080
 
   frontend-node-react-pdf:
     container_name: frontend-node-react-pdf
     build: ./frontend-react/
+    image: liminha/frontend-react-gotenberg-pdf
     ports:
       - 4200:4200
