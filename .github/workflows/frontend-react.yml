@@ -36,7 +36,7 @@ jobs:
       with:
         name: dist-without-markdown
         path: |
-          dist
+          frontend-react/dist
           !dist/**/*.md
         
   Deploy_DSV:
