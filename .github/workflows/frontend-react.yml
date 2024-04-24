@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  FrontendReact:
     runs-on: ubuntu-latest
 
     strategy:
