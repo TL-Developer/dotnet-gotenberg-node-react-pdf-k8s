@@ -29,7 +29,7 @@ jobs:
 
     - name: Build Project
       run: |
-        cd frontend-react && npm build
+        cd frontend-react && npm run build
 
     - name: LS
       run: |
