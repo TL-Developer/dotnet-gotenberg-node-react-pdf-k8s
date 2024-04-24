@@ -35,8 +35,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: dist
-        path: |
-          ./frontend-react/dist
+        path: frontend-react/build
         
   Deploy_DSV:
     needs: Build
